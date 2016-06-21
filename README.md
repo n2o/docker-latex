@@ -19,4 +19,27 @@ Connect to local container with a bash:
 $ docker run -it hhucn-latex bash
 ```
 
+## Copy files to the running container
 
+Assuming you connected to the container you previously built and started a bash
+with:
+
+```bash
+$ docker run -it hhucn-latex bash
+root@ac9e1dfa2eecy:/#
+```
+
+In this example, the host is `ac9e1dfa2eec`. We can now copy files from our host
+into this container. For example we want to copy the file `foo.md` into our
+container. Then we have to call from our *host* system:
+
+```bash
+$ docker cp foo.md ac9e1dfa2eec:/foo.md
+```
+
+Inside the container, we can see the file:
+
+```bash
+root@ac9e1dfa2eecy:/ ls -l foo.md
+-rw-r--r-- 1 root root 4 Jun 21 13:04 foo.md
+```
