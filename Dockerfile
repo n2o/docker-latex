@@ -33,3 +33,5 @@ RUN touch $locs
 RUN echo "de_DE.UTF-8 UTF-8" >> $locs
 RUN echo "en_US.UTF-8 UTF-8" >> $locs
 RUN locale-gen
+# Set language
+ENV LANG de_DE.UTF-8
