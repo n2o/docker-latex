@@ -3,9 +3,10 @@ MAINTAINER Christian Meter <meter@cs.uni-duesseldorf.de>
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV src /etc/apt/sources.list
+ENV locs /etc/locale.gen
 
 # Remove old sources.list
-RUN rm $src
+RUN mv $src $src.bak
 RUN touch $src
 
 # Add local mirrors
@@ -16,6 +17,14 @@ RUN echo "deb http://httpredir.debian.org/debian jessie-updates main" >> $src
 RUN echo "deb http://security.debian.org/ jessie/updates main contrib non-free" >> $src
 RUN echo "deb-src http://security.debian.org/ jessie/updates main contrib non-free" >> $src
 
+# Create locales (needed to build latex files)
+RUN mv $locs $locs.bak
+RUN touch $locs
+RUN echo "de_DE.UTF-8 UTF-8"
+RUN echo "en_US.UTF-8 UTF-8"
+RUN locale-gen
+
+# Install packages
 RUN apt-get update -q
 RUN apt-get install -qy texlive-full
 RUN apt-get install -qy python-pygments
