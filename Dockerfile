@@ -37,3 +37,6 @@ RUN echo "en_US.UTF-8 UTF-8" >> $locs
 RUN locale-gen
 # Set language
 ENV LANG de_DE.UTF-8
+
+# Add ssh host key of our Gitlab Server
+RUN echo "gitlab.cs.uni-duesseldorf.de ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBZ3qJ6fZILnAaknonZYF6uf3rL2WcgPCMFbdnTBfjzS+5HxIVSvmNfCSX88bgZw+c3I/Hz5kxcpWyD0RdE0wlCDsHhG2A45rKFnBj3Rf3FhCypxze8/PpxfIeOIsfTMw9aH7B2uo2fPuivNyz3G/Z0HdALHvSROmSlCiQONxXb5QErEZSdYC7IWqt4grRuwSPerI7i5giwn1KNZ5ifEoat/u6CkwkPavzgSV30RM76ZvG/eBrPb+OJ0hthQ7q3AND1Bh5UXW32L4Aip3zY9rsSvcrMvbgE9jHNGzbi3SsbOj6bgoF4R6Nfn201XHK/ZKwokPJYPUbzYNxI+4x6qin" >> /home/root/.ssh/known_hosts
