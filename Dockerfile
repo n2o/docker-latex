@@ -18,12 +18,12 @@ RUN echo "deb http://security.debian.org/ jessie/updates main contrib non-free" 
 RUN echo "deb-src http://security.debian.org/ jessie/updates main contrib non-free" >> $src
 
 # Install packages
-RUN apt-get update
-RUN apt-get install -y locales
-RUN apt-get install -y texlive-full
-RUN apt-get install -y python-pygments
-RUN apt-get install -y gnuplot
-RUN apt-get install -y inkscape
+RUN apt-get update -qq
+RUN apt-get install -qqy locales
+RUN apt-get install -qqy texlive-full
+RUN apt-get install -qqy python-pygments
+RUN apt-get install -qqy gnuplot
+RUN apt-get install -qqy inkscape
 
 RUN gem install rake
 
