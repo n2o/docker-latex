@@ -24,6 +24,8 @@ RUN apt-get install -qqy texlive-full
 RUN apt-get install -qqy python-pygments
 RUN apt-get install -qqy gnuplot
 RUN apt-get install -qqy inkscape
+RUN apt-get install -qqy git
+RUN apt-get install -qqy openssh-client
 
 RUN gem install rake
 
