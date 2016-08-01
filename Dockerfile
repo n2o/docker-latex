@@ -41,4 +41,4 @@ ENV LANG de_DE.UTF-8
 
 # Add ssh host key of our Gitlab Server
 RUN mkdir /root/.ssh
-RUN ssh-keyscan -t rsa gitlab.cs.uni-duesseldorf.de >> root/.ssh/known_hosts
+RUN ssh-keyscan -t rsa gitlab.cs.uni-duesseldorf.de >> /root/.ssh/known_hosts
