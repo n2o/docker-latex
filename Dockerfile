@@ -2,20 +2,7 @@ FROM debian:jessie
 MAINTAINER Christian Meter <meter@cs.uni-duesseldorf.de>
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV src /etc/apt/sources.list
 ENV locs /etc/locale.gen
-
-# Remove old sources.list
-RUN mv $src $src.bak && \
-    touch $src
-
-# Add local mirrors
-RUN echo "deb http://mirror.cs.uni-duesseldorf.de/debian/ jessie main contrib non-free" >> $src && \
-    echo "deb-src http://mirror.cs.uni-duesseldorf.de/debian/ jessie main contrib non-free" >> $src && \
-    echo "deb http://httpredir.debian.org/debian jessie main" >> $src && \
-    echo "deb http://httpredir.debian.org/debian jessie-updates main" >> $src && \
-    echo "deb http://security.debian.org/ jessie/updates main contrib non-free" >> $src && \
-    echo "deb-src http://security.debian.org/ jessie/updates main contrib non-free" >> $src
 
 # Install packages
 RUN apt-get update -qq && \
