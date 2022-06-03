@@ -8,7 +8,7 @@ WORKDIR /tex
 
 # Install packages
 RUN apt-get update -qq && \
-    apt-get install -yqq locales texlive-full python3-pygments gnuplot inkscape git openssh-client pdftk xindy && \
+    apt-get install -yqq locales texlive-full python3-pygments gnuplot inkscape git openssh-client pdftk xindy git git-lfs && \
     apt-get clean && apt-get autoremove && rm -rf /var/lib/apt/lists/* && \
     gem install rake
 
