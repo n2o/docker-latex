@@ -1,12 +1,15 @@
-FROM debian:bullseye
+FROM debian:bullseye-slim
 LABEL org.opencontainers.image.authors="cmeter@googlemail.com"
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV locs /etc/locale.gen
 
+WORKDIR /tex
+
 # Install packages
 RUN apt-get update -qq && \
-    apt-get install -yqq locales texlive-full gnuplot inkscape git openssh-client && \
+    apt-get install -yqq locales texlive-full python3-pygments gnuplot inkscape git openssh-client pdftk xindy && \
+    apt-get clean && apt-get autoremove && rm -rf /var/lib/apt/lists/* && \
     gem install rake
 
 # Create locales (needed to build latex files)
@@ -18,3 +21,5 @@ RUN mv $locs $locs.bak && \
 
 # Set language
 ENV LANG de_DE.UTF-8
+
+CMD ["latexmk", "-pvc", "-view=none", "-pdf", "master.tex"]
