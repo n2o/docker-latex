@@ -1,12 +1,12 @@
-FROM debian:jessie
-MAINTAINER Christian Meter <meter@cs.uni-duesseldorf.de>
+FROM debian:bullseye
+LABEL org.opencontainers.image.authors="cmeter@googlemail.com"
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV locs /etc/locale.gen
 
 # Install packages
 RUN apt-get update -qq && \
-    apt-get install -yqq locales texlive-full python-pygments gnuplot inkscape git openssh-client && \
+    apt-get install -yqq locales texlive-full gnuplot inkscape git openssh-client && \
     gem install rake
 
 # Create locales (needed to build latex files)
@@ -18,7 +18,3 @@ RUN mv $locs $locs.bak && \
 
 # Set language
 ENV LANG de_DE.UTF-8
-
-# Add ssh host key of our Gitlab Server
-RUN mkdir /root/.ssh && \
-    ssh-keyscan -t rsa gitlab.cs.uni-duesseldorf.de >> /root/.ssh/known_hosts
